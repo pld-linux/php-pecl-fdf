@@ -41,7 +41,8 @@ To rozszerzenie ma w PECL status: %{_status}.
 %build
 cd fdf
 phpize
-%configure
+%configure \
+	--with-fdftk=/usr
 %{__make}
 
 %install
