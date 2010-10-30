@@ -14,6 +14,9 @@ Source0:	%{_modname}-%{version}%{subver}-%{svnver}.tgz
 # Source0-md5:	d47e547e7247cfd260ec611c44fc8184
 # not yet
 #Source0:	http://pecl.php.net/get/%{_modname}-%{version}.tgz
+Patch0:		%{name}-tsrm.patch
+Patch1:		%{name}-update.patch
+# not yet
 #URL:		http://pecl.php.net/package/Fdf/
 URL:		http://pecl.php.net/
 BuildRequires:	fdftk-devel >= 5
@@ -37,6 +40,8 @@ To rozszerzenie ma w PECL status: %{_status}.
 
 %prep
 %setup -q -c
+%patch0 -p0
+%patch1 -p0
 
 %build
 cd fdf

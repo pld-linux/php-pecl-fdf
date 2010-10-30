@@ -1,0 +1,226 @@
+--- fdf/fdf.c.orig	2010-10-30 09:20:42.895740205 +0200
++++ fdf/fdf.c	2010-10-30 09:23:06.743734339 +0200
+@@ -48,33 +48,27 @@
+ SAPI_POST_HANDLER_FUNC(fdf_post_handler);
+ 
+ /* {{{ arginfo */
+-static
+ ZEND_BEGIN_ARG_INFO(arginfo_fdf_open, 0)
+ 	ZEND_ARG_INFO(0, filename)
+ ZEND_END_ARG_INFO()
+ 
+-static
+ ZEND_BEGIN_ARG_INFO(arginfo_fdf_open_string, 0)
+ 	ZEND_ARG_INFO(0, fdf_data)
+ ZEND_END_ARG_INFO()
+ 
+-static
+ ZEND_BEGIN_ARG_INFO(arginfo_fdf_create, 0)
+ ZEND_END_ARG_INFO()
+ 
+-static
+ ZEND_BEGIN_ARG_INFO(arginfo_fdf_close, 0)
+ 	ZEND_ARG_INFO(0, fdfdoc)
+ ZEND_END_ARG_INFO()
+ 
+-static
+ ZEND_BEGIN_ARG_INFO_EX(arginfo_fdf_get_value, 0, 0, 2)
+ 	ZEND_ARG_INFO(0, fdfdoc)
+ 	ZEND_ARG_INFO(0, fieldname)
+ 	ZEND_ARG_INFO(0, which)
+ ZEND_END_ARG_INFO()
+ 
+-static
+ ZEND_BEGIN_ARG_INFO_EX(arginfo_fdf_set_value, 0, 0, 3)
+ 	ZEND_ARG_INFO(0, fdfdoc)
+ 	ZEND_ARG_INFO(0, fieldname)
+@@ -82,13 +76,11 @@
+ 	ZEND_ARG_INFO(0, isname)
+ ZEND_END_ARG_INFO()
+ 
+-static
+ ZEND_BEGIN_ARG_INFO_EX(arginfo_fdf_next_field_name, 0, 0, 1)
+ 	ZEND_ARG_INFO(0, fdfdoc)
+ 	ZEND_ARG_INFO(0, fieldname)
+ ZEND_END_ARG_INFO()
+ 
+-static
+ ZEND_BEGIN_ARG_INFO(arginfo_fdf_set_ap, 0)
+ 	ZEND_ARG_INFO(0, fdfdoc)
+ 	ZEND_ARG_INFO(0, fieldname)
+@@ -97,7 +89,6 @@
+ 	ZEND_ARG_INFO(0, pagenr)
+ ZEND_END_ARG_INFO()
+ 
+-static
+ ZEND_BEGIN_ARG_INFO(arginfo_fdf_get_ap, 0)
+ 	ZEND_ARG_INFO(0, fdfdoc)
+ 	ZEND_ARG_INFO(0, fieldname)
+@@ -105,46 +96,38 @@
+ 	ZEND_ARG_INFO(0, filename)
+ ZEND_END_ARG_INFO()
+ 
+-static
+ ZEND_BEGIN_ARG_INFO(arginfo_fdf_get_encoding, 0)
+ 	ZEND_ARG_INFO(0, fdfdoc)
+ ZEND_END_ARG_INFO()
+ 
+-static
+ ZEND_BEGIN_ARG_INFO(arginfo_fdf_set_status, 0)
+ 	ZEND_ARG_INFO(0, fdfdoc)
+ 	ZEND_ARG_INFO(0, status)
+ ZEND_END_ARG_INFO()
+ 
+-static
+ ZEND_BEGIN_ARG_INFO(arginfo_fdf_get_status, 0)
+ 	ZEND_ARG_INFO(0, fdfdoc)
+ ZEND_END_ARG_INFO()
+ 
+-static
+ ZEND_BEGIN_ARG_INFO_EX(arginfo_fdf_set_file, 0, 0, 2)
+ 	ZEND_ARG_INFO(0, fdfdoc)
+ 	ZEND_ARG_INFO(0, filename)
+ 	ZEND_ARG_INFO(0, target_frame)
+ ZEND_END_ARG_INFO()
+ 
+-static
+ ZEND_BEGIN_ARG_INFO(arginfo_fdf_get_file, 0)
+ 	ZEND_ARG_INFO(0, fdfdoc)
+ ZEND_END_ARG_INFO()
+ 
+-static
+ ZEND_BEGIN_ARG_INFO_EX(arginfo_fdf_save, 0, 0, 1)
+ 	ZEND_ARG_INFO(0, fdfdoc)
+ 	ZEND_ARG_INFO(0, filename)
+ ZEND_END_ARG_INFO()
+ 
+-static
+ ZEND_BEGIN_ARG_INFO(arginfo_fdf_save_string, 0)
+ 	ZEND_ARG_INFO(0, fdfdoc)
+ ZEND_END_ARG_INFO()
+ 
+-static
+ ZEND_BEGIN_ARG_INFO(arginfo_fdf_add_template, 0)
+ 	ZEND_ARG_INFO(0, fdfdoc)
+ 	ZEND_ARG_INFO(0, newpage)
+@@ -153,7 +136,6 @@
+ 	ZEND_ARG_INFO(0, rename)
+ ZEND_END_ARG_INFO()
+ 
+-static
+ ZEND_BEGIN_ARG_INFO(arginfo_fdf_set_flags, 0)
+ 	ZEND_ARG_INFO(0, fdfdoc)
+ 	ZEND_ARG_INFO(0, fieldname)
+@@ -161,14 +143,12 @@
+ 	ZEND_ARG_INFO(0, newflags)
+ ZEND_END_ARG_INFO()
+ 
+-static
+ ZEND_BEGIN_ARG_INFO(arginfo_fdf_get_flags, 0)
+ 	ZEND_ARG_INFO(0, fdfdoc)
+ 	ZEND_ARG_INFO(0, fieldname)
+ 	ZEND_ARG_INFO(0, whichflags)
+ ZEND_END_ARG_INFO()
+ 
+-static
+ ZEND_BEGIN_ARG_INFO(arginfo_fdf_set_opt, 0)
+ 	ZEND_ARG_INFO(0, fdfdoc)
+ 	ZEND_ARG_INFO(0, fieldname)
+@@ -177,14 +157,12 @@
+ 	ZEND_ARG_INFO(0, name)
+ ZEND_END_ARG_INFO()
+ 
+-static
+ ZEND_BEGIN_ARG_INFO_EX(arginfo_fdf_get_opt, 0, 0, 2)
+ 	ZEND_ARG_INFO(0, fdfdof)
+ 	ZEND_ARG_INFO(0, fieldname)
+ 	ZEND_ARG_INFO(0, element)
+ ZEND_END_ARG_INFO()
+ 
+-static
+ ZEND_BEGIN_ARG_INFO(arginfo_fdf_set_submit_form_action, 0)
+ 	ZEND_ARG_INFO(0, fdfdoc)
+ 	ZEND_ARG_INFO(0, fieldname)
+@@ -193,7 +171,6 @@
+ 	ZEND_ARG_INFO(0, flags)
+ ZEND_END_ARG_INFO()
+ 
+-static
+ ZEND_BEGIN_ARG_INFO(arginfo_fdf_set_javascript_action, 0)
+ 	ZEND_ARG_INFO(0, fdfdoc)
+ 	ZEND_ARG_INFO(0, fieldname)
+@@ -201,74 +178,62 @@
+ 	ZEND_ARG_INFO(0, script)
+ ZEND_END_ARG_INFO()
+ 
+-static
+ ZEND_BEGIN_ARG_INFO(arginfo_fdf_set_encoding, 0)
+ 	ZEND_ARG_INFO(0, fdf_document)
+ 	ZEND_ARG_INFO(0, encoding)
+ ZEND_END_ARG_INFO()
+ 
+-static
+ ZEND_BEGIN_ARG_INFO(arginfo_fdf_errno, 0)
+ ZEND_END_ARG_INFO()
+ 
+-static
+ ZEND_BEGIN_ARG_INFO(arginfo_fdf_error, 0)
+ 	ZEND_ARG_INFO(0, errno)
+ ZEND_END_ARG_INFO()
+ 
+-static
+ ZEND_BEGIN_ARG_INFO_EX(arginfo_fdf_get_version, 0, 0, 0)
+ 	ZEND_ARG_INFO(0, fdfdoc)
+ ZEND_END_ARG_INFO()
+ 
+-static
+ ZEND_BEGIN_ARG_INFO(arginfo_fdf_set_version, 0)
+ 	ZEND_ARG_INFO(0, fdfdoc)
+ 	ZEND_ARG_INFO(0, version)
+ ZEND_END_ARG_INFO()
+ 
+-static
+ ZEND_BEGIN_ARG_INFO(arginfo_fdf_add_doc_javascript, 0)
+ 	ZEND_ARG_INFO(0, fdfdoc)
+ 	ZEND_ARG_INFO(0, scriptname)
+ 	ZEND_ARG_INFO(0, script)
+ ZEND_END_ARG_INFO()
+ 
+-static
+ ZEND_BEGIN_ARG_INFO(arginfo_fdf_set_on_import_javascript, 0)
+ 	ZEND_ARG_INFO(0, fdfdoc)
+ 	ZEND_ARG_INFO(0, script)
+ 	ZEND_ARG_INFO(0, before_data_import)
+ ZEND_END_ARG_INFO()
+ 
+-static
+ ZEND_BEGIN_ARG_INFO(arginfo_fdf_set_target_frame, 0)
+ 	ZEND_ARG_INFO(0, fdfdoc)
+ 	ZEND_ARG_INFO(0, target)
+ ZEND_END_ARG_INFO()
+ 
+-static
+ ZEND_BEGIN_ARG_INFO(arginfo_fdf_remove_item, 0)
+ 	ZEND_ARG_INFO(0, fdfdoc)
+ 	ZEND_ARG_INFO(0, fieldname)
+ 	ZEND_ARG_INFO(0, item)
+ ZEND_END_ARG_INFO()
+ 
+-static
+ ZEND_BEGIN_ARG_INFO(arginfo_fdf_get_attachment, 0)
+ 	ZEND_ARG_INFO(0, fdfdoc)
+ 	ZEND_ARG_INFO(0, fieldname)
+ 	ZEND_ARG_INFO(0, savepath)
+ ZEND_END_ARG_INFO()
+ 
+-static
+ ZEND_BEGIN_ARG_INFO_EX(arginfo_fdf_enum_values, 0, 0, 2)
+ 	ZEND_ARG_INFO(0, fdfdoc)
+ 	ZEND_ARG_INFO(0, function)
+ 	ZEND_ARG_INFO(0, userdata)
+ ZEND_END_ARG_INFO()
+ 
+-static
+ ZEND_BEGIN_ARG_INFO(arginfo_fdf_header, 0)
+ ZEND_END_ARG_INFO()
+ 
