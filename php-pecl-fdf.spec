@@ -7,7 +7,7 @@ Version:	5.0
 %define	subver	rc1
 %define	svnver	297330
 Release:	0.%{subver}.1
-License:	PHP 2.02
+License:	PHP 3.01
 Group:		Development/Languages/PHP
 # svn checkout http://svn.php.net/repository/pecl/fdf/trunk fdf
 Source0:	%{_modname}-%{version}%{subver}-%{svnver}.tgz
