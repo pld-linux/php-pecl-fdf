@@ -7,7 +7,7 @@ Summary:	%{modname} - PDF Form Data Format functions
 Summary(pl.UTF-8):	%{modname} - funkcje do obsługi formularzy PDF (PDF Form Data Format)
 Name:		%{php_name}-pecl-%{modname}
 Version:	5.0
-Release:	0.%{subver}.1
+Release:	0.%{subver}.2
 License:	PHP 3.01
 Group:		Development/Languages/PHP
 # svn checkout http://svn.php.net/repository/pecl/fdf/trunk fdf
@@ -25,6 +25,7 @@ BuildRequires:	fdftk-devel >= 5
 BuildRequires:	rpmbuild(macros) >= 1.650
 %{?requires_php_extension}
 Requires:	php(core) >= 5.0.4
+Provides:	php(%{modname}) = %{version}
 Obsoletes:	php-fdf
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
